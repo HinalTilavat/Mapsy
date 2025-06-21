@@ -1,50 +1,72 @@
-# Welcome to your Expo app 👋
+# Mapsy App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+## Objective
+Build a React Native application that allows users to:
+- Search for a start and end location
+- Fetch the driving route using a routing API
+- Display route options
+- Visualize the selected route on a map with a clearly drawn path
 
-## Get started
+---
 
-1. Install dependencies
+## Features & Screens
 
-   ```bash
-   npm install
-   ```
+### 1. Route Input Screen
+- Two input fields: **Start Point** and **End Point**
+- Tapping either field navigates to the Location Search Screen
 
-2. Start the app
+### 2. Location Search Screen
+- User types a location (live search feature)
+- Uses the following API for search results:  
+  `https://www.onemap.gov.sg/api/common/elastic/search?searchVal={query}&returnGeom=Y&getAddrDetails=Y&pageNum=1`
+- Displays a list of matching places based on input
+- User selects a location, which navigates back to the Route Input Screen with the selected value
 
-   ```bash
-   npx expo start
-   ```
+### 3. Route Confirmation & Options
+- Once both Start and End points are filled, user can confirm
+- On confirmation, fetch route using:  
+  `http://router.project-osrm.org/route/v1/driving/{startLng},{startLat};{endLng},{endLat}?overview=full&geometries=geojson`
+- Display a list of route options from the API response
 
-In the output, you'll find options to open the app in a
+### 4. Route Map Screen
+- Opens a map view
+- Draws the route line (path) between Start and End points using GeoJSON data
+- Centers and zooms the map to fit the route
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+---
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+## Evaluation Metrics
 
-## Get a fresh project
+- **App Functionality:**  
+  - Correctly detects and responds to changes in app permissions
+- **Stability:**  
+  - No crashes or unhandled errors when toggling permissions or switching screens
 
-When you're ready, run:
+---
 
-```bash
-npm run reset-project
-```
+## Evaluation Criteria
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+- **Technical Skills:**  
+  - Proper use of hooks, navigation, and state management (e.g., Redux or Context API)
+- **Code Quality:**  
+  - Clean, modular, and reusable components
+- **API Usage and Integration:**  
+  - Well-handled API calls with proper error handling and loading states
+  - Offline/online support if applicable
 
-## Learn more
+---
 
-To learn more about developing your project with Expo, look at the following resources:
+## APIs Used
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+- **Location Search:**  
+  `https://www.onemap.gov.sg/api/common/elastic/search`
+- **Route Calculation:**  
+  `http://router.project-osrm.org/route/v1/driving`
 
-## Join the community
+---
 
-Join our community of developers creating universal apps.
+## Notes
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+- Ensure all components are modular and reusable
+- Handle all API errors gracefully
+- Focus on user experience and app stability
