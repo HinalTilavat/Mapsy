@@ -9,6 +9,13 @@ Build a React Native application that allows users to:
 
 ---
 
+## Download
+
+You can download the latest APK from Google Drive:  
+[Download Mapsy APK](https://drive.google.com/file/d/1U1688p4_lFhdGYtL21rIZyPvcmvo5kzR/view?usp=sharing)
+
+---
+
 ## Features & Screens
 
 ### 1. Route Input Screen
